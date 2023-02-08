@@ -1,87 +1,89 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class AnswerInfo : MonoBehaviour
 {
     // Следующий контейнер с вопросами и ответами, который нужно будет показать.
-    public GameObject nextAsk;
+    [SerializeField] private GameObject _nextAsk;
 
     // Вопрос
-    public string ask;
+    [SerializeField] private string _ask;
 
     // Список ответов, которые есть
-    public string[] answers;
+    [SerializeField] private string[] _answers;
 
-    // Префабы кнопок с ответами
-    public GameObject[] prefabs;
+    // Префабы UI
+    [SerializeField] private GameObject[] _UIPrefabs;
 
     // Запускать ли скрипт
-    public bool isStart = false;
+    private bool _isStart = true;
 
     // Для работы с массивом answers
-    private int answerCount = 0; 
+    private int _answerCount = 0;
 
     private void Start()
     {
-        if (isStart)
+        if (_isStart)
         {
             // Добавляем UI в окно игры.
-            MakeUI(prefabs[0], -1, 145);
-            MakeUI(prefabs[1], -1, 27);
-            MakeUI(prefabs[2], -268, -56);
-            MakeUI(prefabs[3], 266, -56);
-            MakeUI(prefabs[4], -268, -190);
-            MakeUI(prefabs[5], 266, -190);
+            MakeUI(_UIPrefabs[0], new Vector2(0, 145), true);
+            MakeUI(_UIPrefabs[1], new Vector2(0, 27), true);
+            MakeUI(_UIPrefabs[2], new Vector2(-268, -56));
+            MakeUI(_UIPrefabs[3], new Vector2(266, -56));
+            MakeUI(_UIPrefabs[4], new Vector2(-268, -190));
+            MakeUI(_UIPrefabs[5], new Vector2(266, -190));
         }
     }
 
-    // Добавляет UI, принимает Префаб какого-то из элементов UI, его позицию X и Y
-    public void MakeUI(GameObject prefab, int posX, int posY)
+    // Добавляет UI, принимает Префаб какого-то из элементов UI, его позицию X и Y, будет ли объект по середине по X
+    private void MakeUI(GameObject prefab, Vector2 pos, bool isMiddleX = false)
     {
         // Добавляем в игру UI
-        var p = Instantiate(prefab);
+        var UIprefab = Instantiate(prefab);
         // Берем его компонент RectTransform
-        var rt = p.GetComponent<RectTransform>();
+        var rt = UIprefab.GetComponent<RectTransform>();
         // Задаем родителем askCont
-        p.transform.SetParent(transform);
+        UIprefab.transform.SetParent(transform);
         // Создаем позицию, в которой должен появиться UI элемент
-        p.transform.localPosition = new Vector3(transform.localPosition.x, 0f, transform.localPosition.z);
+        UIprefab.transform.localPosition = new Vector3(transform.localPosition.x, 0f, transform.localPosition.z);
 
-        if (posX == -1) // Если поставлю posX -1 тогда позиция UI по X будет по середине, Y - заданным числом
+        if (isMiddleX) // Если isMiddle = true значит позиция по X будет середина
         {
-            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, posY);
+            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, pos.y);
         }
         else // Иначе UI появится по строго заданной позиции
         {
-            rt.anchoredPosition = new Vector2(posX, posY);
+            rt.anchoredPosition = new Vector2(pos.x, pos.y);
         }
-        
+
         // Делаем величину по умолчанию
-        p.transform.localScale = new Vector3(1f, 1f, 1f);
+        UIprefab.transform.localScale = new Vector3(1f, 1f, 1f);
 
         // Функция, которая записывает текст в кнопки и в вопрос.
-        MakeText(p);
+        MakeText(UIprefab);
     }
 
-    void MakeText(GameObject p)
+    private void MakeText(GameObject UIprefab)
     {
         // Находим компонент Text в переданном UI
-        var pText = p.GetComponent<Text>();
+        var UIprefabText = UIprefab.GetComponent<Text>();
 
-        if (pText)  // Если компонент Text есть, то записываем в него вопрос.
+        if (UIprefabText)  // Если компонент Text есть, то записываем в него вопрос.
         {
-            pText.text = ask;
+            UIprefabText.text = _ask;
         }
-        else if(p.GetComponentInChildren<Text>()) // Если компонент Text лежит в кнопке, то присваеваем ей текст из массива.
+        else if(UIprefab.GetComponentInChildren<Text>()) // Если компонент Text лежит в кнопке, то присваеваем ей текст из массива.
         {
-            pText = p.GetComponentInChildren<Text>();
-            pText.text = answers[answerCount];
+            UIprefabText = UIprefab.GetComponentInChildren<Text>();
+            UIprefabText.text = _answers[_answerCount];
             // Нужен, чтобы каждый раз добавлять следующий текст из массива.
-            answerCount++;
+            _answerCount++;
         }
-        else
-        {
-            // Ничего не делаем
-        }
+    }
+
+    public GameObject GetNextAsk()
+    {
+        return _nextAsk;
     }
 }
