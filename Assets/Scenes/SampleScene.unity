@@ -186,7 +186,7 @@ MonoBehaviour:
   - {fileID: 9124518365644960785, guid: 0337a98b5f5a85c48a4a028265f8dd9a, type: 3}
   - {fileID: 5802414607653038339, guid: 95f9fb010f277ea4a8ecf592a84835ec, type: 3}
   - {fileID: 6982104557665640205, guid: dba0e7e155e83d845b65eda79ecfc790, type: 3}
-  isMake: 1
+  isStart: 1
 --- !u!114 &354239624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   - {fileID: 9124518365644960785, guid: 0337a98b5f5a85c48a4a028265f8dd9a, type: 3}
   - {fileID: 5802414607653038339, guid: 95f9fb010f277ea4a8ecf592a84835ec, type: 3}
   - {fileID: 6982104557665640205, guid: dba0e7e155e83d845b65eda79ecfc790, type: 3}
-  isMake: 1
+  isStart: 1
 --- !u!1 &1644976450
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   - {fileID: 9124518365644960785, guid: 0337a98b5f5a85c48a4a028265f8dd9a, type: 3}
   - {fileID: 5802414607653038339, guid: 95f9fb010f277ea4a8ecf592a84835ec, type: 3}
   - {fileID: 6982104557665640205, guid: dba0e7e155e83d845b65eda79ecfc790, type: 3}
-  isMake: 1
+  isStart: 1
 --- !u!114 &1918761301
 MonoBehaviour:
   m_ObjectHideFlags: 0
