@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class AnswerInfo : MonoBehaviour
+public class Answer : MonoBehaviour
 {
     [SerializeField] private GameObject _nextAsk;
     [SerializeField] private string _ask;
@@ -35,7 +35,7 @@ public class AnswerInfo : MonoBehaviour
         {
             rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, pos.y);
         }
-        else 
+        else
         {
             rt.anchoredPosition = new Vector2(pos.x, pos.y);
         }
@@ -53,7 +53,7 @@ public class AnswerInfo : MonoBehaviour
         {
             UIprefabText.text = _ask;
         }
-        else if(UIprefab.GetComponentInChildren<Text>())
+        else if (UIprefab.GetComponentInChildren<Text>())
         {
             UIprefabText = UIprefab.GetComponentInChildren<Text>();
             UIprefabText.text = _answers[_answerCount];

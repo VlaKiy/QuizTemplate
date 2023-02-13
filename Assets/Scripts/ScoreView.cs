@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-public class SendScore : MonoBehaviour
+public class ScoreView : MonoBehaviour
 {
     public void ScoreAssigment(int scoreAnswer)
     {
-        var scoreInfo = GameObject.Find("Canvas").GetComponent<ScoreInfo>();
+        var scoreInfo = GameObject.Find("Canvas").GetComponent<Score>();
         scoreInfo.AddScore(scoreAnswer);
 
         var askCont = transform.parent;
-        var nextAsk = askCont.GetComponent<AnswerInfo>().GetNextAsk();
+        var nextAsk = askCont.GetComponent<Answer>().GetNextAsk();
 
         if (nextAsk != null)
         {

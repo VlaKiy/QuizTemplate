@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ScoreInfo : MonoBehaviour
+public class Score : MonoBehaviour
 {
     [SerializeField] private int _score;
 
