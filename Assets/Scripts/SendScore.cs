@@ -1,24 +1,66 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class SendScore : MonoBehaviour
 {
-    public void ScoreAssigment(int scoreAnswer)
+    public void ScoreAssigment()
     {
-        // Подключаем скрипт, который хранит количество очков.
-        var scoreInfo = GameObject.Find("Canvas").GetComponent<ScoreInfo>();
-        // Добавляем очки за определенный ответ. 1 кнопка - 1 балл, 2 кнопка - 2 балла и т.д.
-        scoreInfo.AddScore(scoreAnswer);
+        EnableButtons();
 
-        // Находим askCont и в скрипте берем переменную со следющим контейнером с вопросами и ответами
+        var scoreInfo = GameObject.Find("Canvas").GetComponent<ScoreInfo>();
+        var rightAnswer = gameObject.GetComponentInParent<AnswerInfo>().GetRightAnswer();
+        var buttonImage = GetComponent<Image>();
+        var answerName = "Answer" + rightAnswer;
+
+        if (gameObject.name == answerName)
+        {
+            StartCoroutine(Waiter());
+            buttonImage.color = Color.green;
+            scoreInfo.AddScore(1);
+        }
+        else
+        {
+            StartCoroutine(Waiter());
+            buttonImage.color = Color.red;
+        }
+    }
+
+    private void GoNextAnswer()
+    {
         var askCont = transform.parent;
         var nextAsk = askCont.GetComponent<AnswerInfo>().GetNextAsk();
 
-        // Если следующий вопрос есть, то включаем видимость следующего контейнера и выключаем текущий.
         if (nextAsk != null)
         {
             nextAsk.SetActive(true);
             askCont.gameObject.SetActive(false);
         }
-        // Здесь уже конец викторины, поэтому должно открываться окошко с результатами.
+    }
+
+    private void EnableButtons()
+    {
+        var askCont = transform.parent;
+
+        for (int i = 1; i <= 4; i++)
+        {
+            var button = askCont.transform.Find("Answer" + i).GetComponent<Button>();
+            button.interactable = false;
+        }
+    }
+
+    IEnumerator Waiter()
+    {
+        var timer = 1;
+
+        for (int i = 1; i <= timer; i++)
+        {
+            yield return new WaitForSeconds(1);
+
+            if (i == timer)
+            {
+                GoNextAnswer();
+            }
+        }
     }
 }
