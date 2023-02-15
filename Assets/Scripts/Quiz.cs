@@ -8,11 +8,24 @@ public class Quiz : MonoBehaviour
     [SerializeField] private Question[] _questionsArray;
     [SerializeField] private AnswerButton[] _buttons;
     [SerializeField] private Text _questionText;
+    [SerializeField] private PlayerStats _playerStats;
  
     private Queue<Question> _questions;
     private Question _currentQuestion;
 
     #region MonoBehaviour
+
+    private void OnEnable()
+    {
+        _playerStats.OnWin += WinGame;
+        _playerStats.OnLost += LoseGame;
+    }
+
+    private void OnDisable()
+    {
+        _playerStats.OnWin -= WinGame;
+        _playerStats.OnLost -= LoseGame;
+    }
 
     private void Awake()
     {
@@ -23,10 +36,20 @@ public class Quiz : MonoBehaviour
 
     private void InitFields()
     {
-        _questionsArray.ShuffleArray();
+        _questionsArray.TryShuffleArray();
         _questions = new Queue<Question>(_questionsArray);
 
         SetNextQuestion();
+    }
+
+    private void WinGame()
+    {
+
+    }
+
+    private void LoseGame()
+    {
+
     }
 
     private void SetNextQuestion()
@@ -43,7 +66,7 @@ public class Quiz : MonoBehaviour
         _currentQuestion = question;
         _currentQuestion.Answered += SetNextQuestion;
 
-        // Refactor - View class
+        // Refactor: View class
         SetupUI();
     }
 
@@ -56,7 +79,7 @@ public class Quiz : MonoBehaviour
     private void SetupButtons()
     {
         var currentAnswers = _currentQuestion.Answers;
-        currentAnswers.ShuffleArray();
+        //currentAnswers.TryShuffleArray();
 
         for (var i = 0; i < _buttons.Length; i++)
             _buttons[i].Init(currentAnswers[i]);
