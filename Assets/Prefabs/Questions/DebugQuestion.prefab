@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6691987251449716703}
   - component: {fileID: 6691987251449716702}
   m_Layer: 0
-  m_Name: Question
+  m_Name: DebugQuestion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,12 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da47ebc17cc041f38082b3b9caafb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _text: "\u0412\u044B\u0431\u0435\u0440\u0438 \u0447\u0435\u0442\u043D\u0443\u044E
+    \u0446\u0438\u0444\u0440\u0443"
   _answers:
-  - AnswerText: 
+  - AnswerText: 1
     IsCorrect: 0
-  - AnswerText: 
+  - AnswerText: 3
     IsCorrect: 0
-  - AnswerText: 
+  - AnswerText: 99
     IsCorrect: 0
-  - AnswerText: 
-    IsCorrect: 0
+  - AnswerText: 4
+    IsCorrect: 1
