@@ -17,13 +17,11 @@ public class Quiz : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerStats.OnWin += WinGame;
         _playerStats.OnLost += LoseGame;
     }
 
     private void OnDisable()
     {
-        _playerStats.OnWin -= WinGame;
         _playerStats.OnLost -= LoseGame;
     }
 
@@ -40,11 +38,6 @@ public class Quiz : MonoBehaviour
         _questions = new Queue<Question>(_questionsArray);
 
         SetNextQuestion();
-    }
-
-    private void WinGame()
-    {
-
     }
 
     private void LoseGame()
