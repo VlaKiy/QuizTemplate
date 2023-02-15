@@ -5,6 +5,7 @@ public class AnswerButton : MonoBehaviour
 {
     [SerializeField] private Text _text;
     [SerializeField] private Button _button;
+    [SerializeField] private AnswerChecker _answerChecker;
 
     private Answer _answer;
 
@@ -30,22 +31,6 @@ public class AnswerButton : MonoBehaviour
 
     private void CheckAnswer()
     {
-        if (_answer.IsCorrect)
-        {
-            HandleCorrectAnswer();
-            return;
-        }
-
-        HandleWrongAnswer();
-    }
-
-    private void HandleCorrectAnswer()
-    {
-
-    }
-
-    private void HandleWrongAnswer()
-    {
-
+        _answerChecker.CheckAnswer(_answer);
     }
 }
