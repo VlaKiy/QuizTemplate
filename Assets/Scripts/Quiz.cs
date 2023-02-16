@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityTools;
 using UnityEngine.UI;
+using UnityTools;
 
 public class Quiz : MonoBehaviour
 {
-    [SerializeField] private Question[] _questionsArray;
-    [SerializeField] private AnswerButton[] _buttons;
     [SerializeField] private Text _questionText;
     [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private Question[] _questionsArray;
+    [SerializeField] private AnswerButton[] _buttons;
  
     private Queue<Question> _questions;
     private Question _currentQuestion;
@@ -18,16 +18,19 @@ public class Quiz : MonoBehaviour
     private void OnEnable()
     {
         _playerStats.OnLost += LoseGame;
+        _playerStats.OnAnsweredQuestion += SetNextQuestion;
     }
 
     private void OnDisable()
     {
         _playerStats.OnLost -= LoseGame;
+        _playerStats.OnAnsweredQuestion -= SetNextQuestion;
     }
 
     private void Awake()
     {
         InitFields();
+        SetNextQuestion();
     }
 
     #endregion
@@ -36,8 +39,6 @@ public class Quiz : MonoBehaviour
     {
         _questionsArray.TryShuffleArray<Question>();
         _questions = new Queue<Question>(_questionsArray);
-
-        SetNextQuestion();
     }
 
     private void LoseGame()
@@ -47,9 +48,6 @@ public class Quiz : MonoBehaviour
 
     private void SetNextQuestion()
     {
-        if (_currentQuestion != null)
-            _currentQuestion.Answered -= SetNextQuestion;
-
         var question = GetNextQuestion();
         SetCurrentQuestion(question);
     }
@@ -57,7 +55,6 @@ public class Quiz : MonoBehaviour
     private void SetCurrentQuestion(Question question)
     {
         _currentQuestion = question;
-        _currentQuestion.Answered += SetNextQuestion;
 
         // Refactor: View class
         SetupUI();
