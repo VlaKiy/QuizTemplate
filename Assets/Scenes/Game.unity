@@ -494,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 1302549589}
   _button: {fileID: 733293880}
+  _answerChecker: {fileID: 1570126938}
 --- !u!1 &884647349
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 895982286}
   _button: {fileID: 884647351}
+  _answerChecker: {fileID: 1570126938}
 --- !u!1 &895982284
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 498502088}
   _button: {fileID: 1215817178}
+  _answerChecker: {fileID: 1570126938}
 --- !u!1 &1302549587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 1496421318}
   _button: {fileID: 1456226906}
+  _answerChecker: {fileID: 1570126938}
 --- !u!1 &1496421316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1243,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1570126936}
   - component: {fileID: 1570126937}
+  - component: {fileID: 1570126939}
+  - component: {fileID: 1570126938}
   m_Layer: 5
   m_Name: Quiz
   m_TagString: Untagged
@@ -1284,12 +1290,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questionsArray:
   - {fileID: 6691987251449716702, guid: fad6ec890f1a449f49e7ee6ef58ceb90, type: 3}
+  - {fileID: 6691987251449716702, guid: 33b7e3ccf82764af88f34cd700216e1a, type: 3}
   _buttons:
   - {fileID: 733293883}
   - {fileID: 1215817181}
   - {fileID: 1456226909}
   - {fileID: 884647354}
   _questionText: {fileID: 145246349}
+  _playerStats: {fileID: 1570126939}
+--- !u!114 &1570126938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570126935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b35228787fff45009e459bc77002fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1570126939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570126935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b05660c0221432c96bd384003f2d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _answerChecker: {fileID: 1570126938}
 --- !u!1 &1644976450
 GameObject:
   m_ObjectHideFlags: 0
