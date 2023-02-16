@@ -6,9 +6,12 @@ namespace UnityTools
 {
     public static class UnityArrayExtensions
     {
-        public static void ShuffleArray(this Array array)
+        public static void TryShuffleArray<T>(this Array array)
         {
-            var newArray = array.Clone() as int[];
+            if (array.Length < 2)
+                return;
+
+            var newArray = array.Clone() as T[];
             for (int i = 0; i < newArray.Length; i++)
             {
                 var temp = newArray[i];

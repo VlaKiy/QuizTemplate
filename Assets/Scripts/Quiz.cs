@@ -34,7 +34,7 @@ public class Quiz : MonoBehaviour
 
     private void InitFields()
     {
-        _questionsArray.TryShuffleArray();
+        _questionsArray.TryShuffleArray<Question>();
         _questions = new Queue<Question>(_questionsArray);
 
         SetNextQuestion();
@@ -72,7 +72,7 @@ public class Quiz : MonoBehaviour
     private void SetupButtons()
     {
         var currentAnswers = _currentQuestion.Answers;
-        //currentAnswers.TryShuffleArray();
+        currentAnswers.TryShuffleArray<Answer>();
 
         for (var i = 0; i < _buttons.Length; i++)
             _buttons[i].Init(currentAnswers[i]);
