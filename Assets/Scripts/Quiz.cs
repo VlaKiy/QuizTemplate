@@ -17,13 +17,13 @@ public class Quiz : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerStats.OnLost += LoseGame;
+        _playerStats.OnLost += EndGame;
         _playerStats.OnAnsweredQuestion += SetNextQuestion;
     }
 
     private void OnDisable()
     {
-        _playerStats.OnLost -= LoseGame;
+        _playerStats.OnLost -= EndGame;
         _playerStats.OnAnsweredQuestion -= SetNextQuestion;
     }
 
@@ -41,15 +41,12 @@ public class Quiz : MonoBehaviour
         _questions = new Queue<Question>(_questionsArray);
     }
 
-    private void LoseGame()
-    {
-
-    }
-
     private void SetNextQuestion()
     {
-        var question = GetNextQuestion();
-        SetCurrentQuestion(question);
+        if (TryGetNextQuestion(out var question))
+            SetCurrentQuestion(question);
+        else
+            EndGame();
     }
 
     private void SetCurrentQuestion(Question question)
@@ -58,6 +55,11 @@ public class Quiz : MonoBehaviour
 
         // Refactor: View class
         SetupUI();
+    }
+
+    private void EndGame()
+    {
+        print("End!");
     }
 
     private void SetupUI()
@@ -81,8 +83,14 @@ public class Quiz : MonoBehaviour
         _questionText.text = text;
     }
 
-    private Question GetNextQuestion()
+    private bool TryGetNextQuestion(out Question question)
     {
-        return _questions.Dequeue();
+        question = null;
+
+        if (_questions.Count == 0)
+            return false;
+
+        question = _questions.Dequeue();
+        return true;
     }
 }
