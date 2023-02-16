@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     private int _reward = 1;
     private int _punishment = 1;
 
+    public event Action OnAnsweredQuestion;
     public event Action OnLost;
 
     #region MonoBehaviour
@@ -20,13 +21,26 @@ public class PlayerStats : MonoBehaviour
         _answerChecker.OnWrongAnswered += TakeLifePoint;
     }
 
+    private void OnDisable()
+    {
+        _answerChecker.OnRightAnswered -= AddScore;
+        _answerChecker.OnWrongAnswered -= TakeLifePoint;
+    }
+
     #endregion
 
-    private void AddScore() => _score += _reward;
+    private void AddScore()
+    {
+        _score += _reward;
+
+        OnAnsweredQuestion?.Invoke();
+    }
 
     private void TakeLifePoint()
     {
         _lifePoints -= _punishment;
+
+        OnAnsweredQuestion?.Invoke();
 
         if (_lifePoints < 0)
             OnLost?.Invoke();
