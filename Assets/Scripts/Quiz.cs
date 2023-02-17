@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityTools;
@@ -13,27 +14,27 @@ public class Quiz : MonoBehaviour
     private Queue<Question> _questions;
     private Question _currentQuestion;
 
+    public event Action OnQuizEnded;
+
     #region MonoBehaviour
 
     private void OnEnable()
     {
-        _playerStats.OnLost += EndGame;
         _playerStats.OnAnsweredQuestion += SetNextQuestion;
     }
 
     private void OnDisable()
     {
-        _playerStats.OnLost -= EndGame;
         _playerStats.OnAnsweredQuestion -= SetNextQuestion;
     }
 
-    private void Awake()
+    #endregion
+
+    private void StartQuiz()
     {
         InitFields();
         SetNextQuestion();
     }
-
-    #endregion
 
     private void InitFields()
     {
@@ -46,7 +47,7 @@ public class Quiz : MonoBehaviour
         if (TryGetNextQuestion(out var question))
             SetCurrentQuestion(question);
         else
-            EndGame();
+            OnQuizEnded?.Invoke();
     }
 
     private void SetCurrentQuestion(Question question)
@@ -55,11 +56,6 @@ public class Quiz : MonoBehaviour
 
         // Refactor: View class
         SetupUI();
-    }
-
-    private void EndGame()
-    {
-        print("End!");
     }
 
     private void SetupUI()
