@@ -26,13 +26,13 @@ public class Quiz : MonoBehaviour
         _playerStats.OnAnsweredQuestion -= SetNextQuestion;
     }
 
-    #endregion
-
-    private void StartQuiz()
+    private void Awake()
     {
         InitFields();
         SetNextQuestion();
     }
+
+    #endregion
 
     private void InitFields()
     {
