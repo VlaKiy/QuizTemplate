@@ -51,7 +51,7 @@ public class Quiz : MonoBehaviour
 
             var score = _playerStats.Score;
             _result.Calculate(score);
-            _result.Show();
+            _result.Activate();
         }
     }
 
