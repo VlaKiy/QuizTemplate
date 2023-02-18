@@ -5,14 +5,13 @@ using UnityTools;
 
 public class Quiz : MonoBehaviour
 {
+    [SerializeField] private Result _result;
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private QuizView _quizView;
     [SerializeField] private Question[] _questionsArray;
  
     private Queue<Question> _questions;
     private Question _currentQuestion;
-
-    public event Action OnQuizEnded;
 
     #region MonoBehaviour
 
@@ -43,9 +42,17 @@ public class Quiz : MonoBehaviour
     private void SetNextQuestion()
     {
         if (TryGetNextQuestion(out var question))
+        {
             SetCurrentQuestion(question);
+        }
         else
-            OnQuizEnded?.Invoke();
+        {
+            gameObject.SetActive(false);
+
+            var score = _playerStats.Score;
+            _result.Calculate(score);
+            _result.Show();
+        }
     }
 
     private void SetCurrentQuestion(Question question)
