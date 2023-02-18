@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
     private int _score = 0;
     private int _reward = 1;
 
+    public int Score => _score;
+
     public event Action OnAnsweredQuestion;
 
     #region MonoBehaviour
