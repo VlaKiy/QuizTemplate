@@ -6,7 +6,7 @@ public class Result : MonoBehaviour
 
     public void Calculate(int score)
     {
-        if (score > 0)
+        if (score >= 0)
             _resultView.ShowFirst();
         else if (score > 5)
             _resultView.ShowSecond();
