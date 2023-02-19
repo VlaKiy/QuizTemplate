@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 733293881}
   - component: {fileID: 733293880}
   - component: {fileID: 733293883}
+  - component: {fileID: 733293884}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -708,6 +709,21 @@ MonoBehaviour:
   _text: {fileID: 1302549589}
   _button: {fileID: 733293880}
   _answerChecker: {fileID: 1570126938}
+--- !u!114 &733293884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733293878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe29950b7e5a4d35804fe7252326e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 733293883}
+  _showDuration: 0.6
+  _hideDuration: 0.6
 --- !u!1 &884647349
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +737,7 @@ GameObject:
   - component: {fileID: 884647352}
   - component: {fileID: 884647351}
   - component: {fileID: 884647354}
+  - component: {fileID: 884647355}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -843,6 +860,21 @@ MonoBehaviour:
   _text: {fileID: 895982286}
   _button: {fileID: 884647351}
   _answerChecker: {fileID: 1570126938}
+--- !u!114 &884647355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884647349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe29950b7e5a4d35804fe7252326e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 884647354}
+  _showDuration: 0.6
+  _hideDuration: 0.6
 --- !u!1 &895982284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1130,7 @@ GameObject:
   - component: {fileID: 1215817179}
   - component: {fileID: 1215817178}
   - component: {fileID: 1215817181}
+  - component: {fileID: 1215817182}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -1220,6 +1253,21 @@ MonoBehaviour:
   _text: {fileID: 498502088}
   _button: {fileID: 1215817178}
   _answerChecker: {fileID: 1570126938}
+--- !u!114 &1215817182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215817176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe29950b7e5a4d35804fe7252326e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1215817181}
+  _showDuration: 0.6
+  _hideDuration: 0.6
 --- !u!1 &1234112885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1437,6 @@ GameObject:
   - component: {fileID: 1401098398}
   - component: {fileID: 1401098397}
   - component: {fileID: 1401098396}
-  - component: {fileID: 1401098400}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -1512,18 +1559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401098394}
   m_CullTransparentMesh: 0
---- !u!114 &1401098400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401098394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe29950b7e5a4d35804fe7252326e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1456226904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1572,7 @@ GameObject:
   - component: {fileID: 1456226907}
   - component: {fileID: 1456226906}
   - component: {fileID: 1456226909}
+  - component: {fileID: 1456226910}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -1659,6 +1695,21 @@ MonoBehaviour:
   _text: {fileID: 1496421318}
   _button: {fileID: 1456226906}
   _answerChecker: {fileID: 1570126938}
+--- !u!114 &1456226910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456226904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe29950b7e5a4d35804fe7252326e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1456226909}
+  _showDuration: 0.6
+  _hideDuration: 0.6
 --- !u!1 &1496421316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a74a9b148b86440086f11fe37c09379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _result: {fileID: 0}
+  _result: {fileID: 1122984104}
   _playerStats: {fileID: 1570126939}
   _quizView: {fileID: 1570126940}
   _questionsArray:
