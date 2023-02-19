@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class AnswerButton : MonoBehaviour
@@ -8,6 +9,9 @@ public class AnswerButton : MonoBehaviour
     [SerializeField] private AnswerChecker _answerChecker;
 
     private Answer _answer;
+
+    public event Action OnInit;
+    public event Action OnClicked;
 
     #region MonoBehaviour
 
@@ -27,10 +31,14 @@ public class AnswerButton : MonoBehaviour
     {
         _answer = answer;
         _text.text = _answer.AnswerText;
+
+        OnInit?.Invoke();
     }
 
     private void CheckAnswer()
     {
         _answerChecker.CheckAnswer(_answer);
+
+        OnClicked?.Invoke();
     }
 }
