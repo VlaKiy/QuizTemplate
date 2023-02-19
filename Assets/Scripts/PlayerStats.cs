@@ -17,19 +17,20 @@ public class PlayerStats : MonoBehaviour
     private void OnEnable()
     {
         _answerChecker.OnRightAnswered += AddScore;
+        _answerChecker.OnRightAnswered += InvokeAnsweredQuestionEvent;
+        _answerChecker.OnWrongAnswered += InvokeAnsweredQuestionEvent;
     }
 
     private void OnDisable()
     {
         _answerChecker.OnRightAnswered -= AddScore;
+        _answerChecker.OnRightAnswered -= InvokeAnsweredQuestionEvent;
+        _answerChecker.OnWrongAnswered -= InvokeAnsweredQuestionEvent;
     }
 
     #endregion
 
-    private void AddScore()
-    {
-        _score += _reward;
+    private void AddScore() => _score += _reward;
 
-        OnAnsweredQuestion?.Invoke();
-    }
+    private void InvokeAnsweredQuestionEvent() => OnAnsweredQuestion?.Invoke();
 }
