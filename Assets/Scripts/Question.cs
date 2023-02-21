@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-public class Question : MonoBehaviour
+[CreateAssetMenu(fileName = "NewQuestion", menuName = "Quiz/Question")]
+public class Question : ScriptableObject
 {
     public const int AnswerMaximumAmount = 4;
 
@@ -10,8 +11,6 @@ public class Question : MonoBehaviour
 
     public string Text => _text;
     public Answer[] Answers => _answers;
-
-    public event Action Answered;
 
     #region MonoBehaviour
 
