@@ -1848,8 +1848,8 @@ MonoBehaviour:
   _playerStats: {fileID: 1570126939}
   _quizView: {fileID: 1570126940}
   _questionsArray:
-  - {fileID: 6691987251449716702, guid: fad6ec890f1a449f49e7ee6ef58ceb90, type: 3}
-  - {fileID: 6691987251449716702, guid: 33b7e3ccf82764af88f34cd700216e1a, type: 3}
+  - {fileID: 11400000, guid: c999172e9effe4ac499a6fc9e2ab7ee2, type: 2}
+  - {fileID: 11400000, guid: ad231520513b4415fa5f217dafcc268b, type: 2}
 --- !u!114 &1570126938
 MonoBehaviour:
   m_ObjectHideFlags: 0
