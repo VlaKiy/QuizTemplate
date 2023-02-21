@@ -14,7 +14,7 @@ public class Question : ScriptableObject
 
     #region MonoBehaviour
 
-    private void Awake()
+    private void OnValidate()
     {
         if (_answers.Length > AnswerMaximumAmount)
             throw new Exception("This Amount of answers is not too high!");
