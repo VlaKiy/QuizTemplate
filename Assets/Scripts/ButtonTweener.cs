@@ -8,6 +8,7 @@ public class ButtonTweener : MonoBehaviour
     [SerializeField] private float _hideDuration = 0.6f;
 
     private float _hideEndPosition = -10f;
+    private float _intervalBetweenShowAndHide = 1f;
 
     #region MonoBehaviour
 
@@ -27,9 +28,10 @@ public class ButtonTweener : MonoBehaviour
     {
         var originalPosition = transform.position;
         transform.DOScale(Vector3.one, _showDuration);
+
         DOTween.Sequence()
             .Append(transform.DOMoveY(_hideEndPosition, _hideDuration))
-            .AppendInterval(1f)
+            .AppendInterval(_intervalBetweenShowAndHide)
             .AppendCallback(() => transform.position = originalPosition)
             .AppendCallback(() => transform.localScale = Vector3.zero)
             .Append(transform.DOScale(Vector3.one, _showDuration));
