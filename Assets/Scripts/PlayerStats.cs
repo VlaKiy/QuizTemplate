@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private AnswerChecker _answerChecker;
+    [SerializeField] private PlayerStatsView _playerView;
 
     private int _score = 0;
     private int _reward = 1;
@@ -18,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     {
         _answerChecker.OnRightAnswered += AddScore;
         _answerChecker.OnRightAnswered += InvokeAnsweredQuestionEvent;
+        _answerChecker.OnWrongAnswered += UpdateWrongAnswersView;
         _answerChecker.OnWrongAnswered += InvokeAnsweredQuestionEvent;
     }
 
@@ -25,12 +27,20 @@ public class PlayerStats : MonoBehaviour
     {
         _answerChecker.OnRightAnswered -= AddScore;
         _answerChecker.OnRightAnswered -= InvokeAnsweredQuestionEvent;
+        _answerChecker.OnWrongAnswered -= UpdateWrongAnswersView;
         _answerChecker.OnWrongAnswered -= InvokeAnsweredQuestionEvent;
     }
 
     #endregion
 
-    private void AddScore() => _score += _reward;
+    private void AddScore()
+    {
+        _score += _reward;
+
+        _playerView.UpdateRightAnswersConuter(_score);
+    }
+
+    private void UpdateWrongAnswersView() => _playerView.AddWrongAnswer();
 
     private void InvokeAnsweredQuestionEvent() => OnAnsweredQuestion?.Invoke();
 }
