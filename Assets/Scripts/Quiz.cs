@@ -30,10 +30,6 @@ public class Quiz : MonoBehaviour
     private void Awake()
     {
         InitFields();
-    }
-
-    private void Start()
-    {
         TrySetNextQuestion();
     }
 
@@ -55,6 +51,7 @@ public class Quiz : MonoBehaviour
         {
             gameObject.SetActive(false);
 
+            Application.ExternalCall("ShowAd");
             var score = _playerStats.Score;
             _result.Calculate(score);
             _result.Activate();
