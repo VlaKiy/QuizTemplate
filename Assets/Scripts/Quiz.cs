@@ -19,12 +19,12 @@ public class Quiz : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerStats.OnAnsweredQuestion += SetNextQuestion;
+        _playerStats.OnAnsweredQuestion += TrySetNextQuestion;
     }
 
     private void OnDisable()
     {
-        _playerStats.OnAnsweredQuestion -= SetNextQuestion;
+        _playerStats.OnAnsweredQuestion -= TrySetNextQuestion;
     }
 
     private void Awake()
@@ -34,7 +34,7 @@ public class Quiz : MonoBehaviour
 
     private void Start()
     {
-        SetNextQuestion();
+        TrySetNextQuestion();
     }
 
     #endregion
@@ -45,7 +45,7 @@ public class Quiz : MonoBehaviour
         _questions = new Queue<Question>(_questionsArray);
     }
 
-    private void SetNextQuestion()
+    private void TrySetNextQuestion()
     {
         if (TryGetNextQuestion(out var question))
         {
