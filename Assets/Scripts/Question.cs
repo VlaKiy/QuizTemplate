@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System;
 
-public class Question : MonoBehaviour
+[CreateAssetMenu(fileName = "NewQuestion", menuName = "Quiz/Question")]
+public class Question : ScriptableObject
 {
-    public const int AnswerMaximumAmount = 4;
+    private const int AnswerMaximumAmount = 4;
 
+    [Header("Settings")]
     [SerializeField] private string _text;
     [SerializeField] private Answer[] _answers;
 
     public string Text => _text;
     public Answer[] Answers => _answers;
 
-    public event Action Answered;
-
     #region MonoBehaviour
 
-    private void Awake()
+    private void OnValidate()
     {
         if (_answers.Length > AnswerMaximumAmount)
             throw new Exception("This Amount of answers is not too high!");

@@ -1,30 +1,35 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private AnswerChecker _answerChecker;
+    [SerializeField] private PlayerStatsView _playerView;
 
     private int _score = 0;
-    private int _lifePoints = 3;
-    private int _reward = 1;
-    private int _punishment = 1;
+    private readonly int _reward = 1;
+
+    public int Score => _score;
 
     public event Action OnAnsweredQuestion;
-    public event Action OnLost;
 
     #region MonoBehaviour
 
     private void OnEnable()
     {
         _answerChecker.OnRightAnswered += AddScore;
-        _answerChecker.OnWrongAnswered += TakeLifePoint;
+        _answerChecker.OnRightAnswered += InvokeAnsweredQuestionEvent;
+        _answerChecker.OnWrongAnswered += UpdateWrongAnswersView;
+        _answerChecker.OnWrongAnswered += InvokeAnsweredQuestionEvent;
     }
 
     private void OnDisable()
     {
         _answerChecker.OnRightAnswered -= AddScore;
-        _answerChecker.OnWrongAnswered -= TakeLifePoint;
+        _answerChecker.OnRightAnswered -= InvokeAnsweredQuestionEvent;
+        _answerChecker.OnWrongAnswered -= UpdateWrongAnswersView;
+        _answerChecker.OnWrongAnswered -= InvokeAnsweredQuestionEvent;
     }
 
     #endregion
@@ -33,16 +38,10 @@ public class PlayerStats : MonoBehaviour
     {
         _score += _reward;
 
-        OnAnsweredQuestion?.Invoke();
+        _playerView.UpdateRightAnswersConuter(_score);
     }
 
-    private void TakeLifePoint()
-    {
-        _lifePoints -= _punishment;
+    private void UpdateWrongAnswersView() => _playerView.AddWrongAnswer();
 
-        OnAnsweredQuestion?.Invoke();
-
-        if (_lifePoints < 0)
-            OnLost?.Invoke();
-    }
+    private void InvokeAnsweredQuestionEvent() => OnAnsweredQuestion?.Invoke();
 }

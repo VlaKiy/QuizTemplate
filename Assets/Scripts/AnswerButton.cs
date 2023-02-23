@@ -1,32 +1,40 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class AnswerButton : MonoBehaviour
 {
-    [SerializeField] private Text _text;
-    [SerializeField] private Button _button;
+    [Header("Components")]
     [SerializeField] private AnswerChecker _answerChecker;
 
+    [Header("This Button")]
+    [SerializeField] private Text _buttonText;
+    [SerializeField] private Button _originalButton;
+
     private Answer _answer;
+
+    public event Action OnInit;
 
     #region MonoBehaviour
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(CheckAnswer);
+        _originalButton.onClick.AddListener(CheckAnswer);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveAllListeners();
+        _originalButton.onClick.RemoveAllListeners();
     }
 
     #endregion
 
-    public void Init(Answer answer)
+    public void SetupAnswer(Answer answer)
     {
         _answer = answer;
-        _text.text = _answer.AnswerText;
+        _buttonText.text = _answer.AnswerText;
+
+        OnInit?.Invoke();
     }
 
     private void CheckAnswer()
