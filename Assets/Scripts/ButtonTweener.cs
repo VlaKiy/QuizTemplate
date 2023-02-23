@@ -3,7 +3,10 @@ using DG.Tweening;
 
 public class ButtonTweener : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private AnswerButton _button;
+
+    [Header("Settings")]
     [SerializeField] private float _showDuration = 0.6f;
     [SerializeField] private float _hideDuration = 0.6f;
 

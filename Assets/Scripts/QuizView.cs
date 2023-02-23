@@ -19,7 +19,7 @@ public class QuizView : MonoBehaviour
         currentAnswers.TryShuffleArray<Answer>();
 
         for (var i = 0; i < _buttons.Length; i++)
-            _buttons[i].Init(currentAnswers[i]);
+            _buttons[i].SetupAnswer(currentAnswers[i]);
     }
 
     private void SetupQuestionText(Question currentQuestion)

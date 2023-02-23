@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityTools;
 
 public class Quiz : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Result _result;
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private QuizView _quizView;
+
+    [Header("Content")]
     [SerializeField] private Question[] _questionsArray;
  
     private Queue<Question> _questions;
@@ -28,6 +30,10 @@ public class Quiz : MonoBehaviour
     private void Awake()
     {
         InitFields();
+    }
+
+    private void Start()
+    {
         SetNextQuestion();
     }
 

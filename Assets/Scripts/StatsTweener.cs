@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class StatsTweener : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private float _scaleTo = 1.5f;
     [SerializeField] private float _scaleDuration = 0.5f;
     [SerializeField] private float _scaleInterval = 0.1f;

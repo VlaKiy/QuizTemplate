@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private AnswerChecker _answerChecker;
     [SerializeField] private PlayerStatsView _playerView;
 

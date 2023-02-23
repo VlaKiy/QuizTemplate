@@ -5,9 +5,12 @@ public class PlayerStatsView : MonoBehaviour
 {
     private const string DefaultStatsText = "0";
 
+    [Header("Components")]
+    [SerializeField] private StatsTweener _tweener;
+
+    [Header("Answers' counters texts")]
     [SerializeField] private Text _rightAnswersCounter;
     [SerializeField] private Text _wrongAnswersCounter;
-    [SerializeField] private StatsTweener _tweener;
 
     private int _wrongAnswersAmount = 0;
 
