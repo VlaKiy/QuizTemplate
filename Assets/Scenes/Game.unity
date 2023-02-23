@@ -903,9 +903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cdfc482ee6a404ca284bc6c6ec7763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 1302549589}
-  _button: {fileID: 733293880}
   _answerChecker: {fileID: 1570126938}
+  _buttonText: {fileID: 1302549589}
+  _originalButton: {fileID: 733293880}
 --- !u!114 &733293884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,9 +1054,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cdfc482ee6a404ca284bc6c6ec7763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 895982286}
-  _button: {fileID: 884647351}
   _answerChecker: {fileID: 1570126938}
+  _buttonText: {fileID: 895982286}
+  _originalButton: {fileID: 884647351}
 --- !u!114 &884647355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,9 +1483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cdfc482ee6a404ca284bc6c6ec7763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 498502088}
-  _button: {fileID: 1215817178}
   _answerChecker: {fileID: 1570126938}
+  _buttonText: {fileID: 498502088}
+  _originalButton: {fileID: 1215817178}
 --- !u!114 &1215817182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,9 +1940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cdfc482ee6a404ca284bc6c6ec7763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 1496421318}
-  _button: {fileID: 1456226906}
   _answerChecker: {fileID: 1570126938}
+  _buttonText: {fileID: 1496421318}
+  _originalButton: {fileID: 1456226906}
 --- !u!114 &1456226910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,9 +2158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb78edb7c932b48b0a159e92f5028fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tweener: {fileID: 1570126942}
   _rightAnswersCounter: {fileID: 1655795939}
   _wrongAnswersCounter: {fileID: 1683776735}
-  _tweener: {fileID: 1570126942}
 --- !u!114 &1570126942
 MonoBehaviour:
   m_ObjectHideFlags: 0
