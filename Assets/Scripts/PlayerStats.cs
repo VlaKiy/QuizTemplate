@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private PlayerStatsView _playerView;
 
     private int _score = 0;
-    private int _reward = 1;
+    private readonly int _reward = 1;
 
     public int Score => _score;
 

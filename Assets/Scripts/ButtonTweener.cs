@@ -10,8 +10,8 @@ public class ButtonTweener : MonoBehaviour
     [SerializeField] private float _showDuration = 0.6f;
     [SerializeField] private float _hideDuration = 0.6f;
 
-    private float _hideEndPosition = -10f;
-    private float _intervalBetweenShowAndHide = 1f;
+    private readonly float _hideEndPosition = -10f;
+    private readonly float _intervalBetweenShowAndHide = 1f;
 
     #region MonoBehaviour
 
